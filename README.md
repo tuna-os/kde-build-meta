@@ -1,14 +1,12 @@
 # KDE Build Metadata
 
-> ⚠️ **SUPERSEDED — consolidated into [tuna-os/tromso](https://github.com/tuna-os/tromso)**
+> ⚠️ **SUPERSEDED — content development moved to [tuna-os/tromso](https://github.com/tuna-os/tromso)**
 >
-> The KDE/Plasma/freedesktop-sdk elements in this repo were consolidated into
-> the `tuna-os/tromso` BuildStream repo (see its README, updated 2026-07-23),
-> which now builds and publishes `ghcr.io/tuna-os/tromso` directly. Content
-> development here stopped in May 2026; remaining commits are CI/renovate
-> maintenance only. New work happens in `tuna-os/tromso` — open issues/PRs
-> there. This repo is kept for history and is not yet marked archived on
-> GitHub, but should be treated as read-only.
+> The KDE/Plasma/freedesktop-sdk elements formerly developed here were
+> consolidated into `tuna-os/tromso` (see its README, updated 2026-07-23),
+> which now builds and publishes `ghcr.io/tuna-os/tromso` directly. This repo
+> is retained for reference and CI only — treat it as read-only. New work,
+> issues, and PRs belong in [tuna-os/tromso](https://github.com/tuna-os/tromso).
 
 KDE Build Metadata is a [BuildStream](https://docs.buildstream.build/) project for building the
 KDE Plasma 6 desktop stack. It follows the same architecture as GNOME's
