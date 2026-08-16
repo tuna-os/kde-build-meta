@@ -13,7 +13,14 @@ set -x
 mkdir -p logs
 
 # Setup certificates and image version for sysupdate
-if [ "${CI_COMMIT_REF_PROTECTED-}" != true ] || [ "${CI_PIPELINE_SOURCE-}" = "schedule" ]; then
+# SECURITY (sec-check tromso#219): committed snakeoil private keys must never
+# sign artifacts produced for protected refs. The old condition fell back to
+# snakeoil for EVERY scheduled pipeline — including scheduled runs on
+# protected/master branches — so a scheduled build could ship artifacts signed
+# with the publicly-committed snakeoil keys (CWE-321). Protected refs now
+# always use IMPORT_MODE=import (keys from CI secrets); snakeoil is limited to
+# non-protected refs (feature branches / MRs).
+if [ "${CI_COMMIT_REF_PROTECTED-}" != true ]; then
     make -C files/boot-keys generate-keys IMPORT_MODE=snakeoil
     export PUSH_SOURCE=1
 else
