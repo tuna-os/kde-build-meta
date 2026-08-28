@@ -149,7 +149,9 @@ default:
 .test-openqa-template:
   stage: test
   image:
-    name: registry.opensuse.org/devel/openqa/containers15.6/openqa_worker:latest
+    # Pinned from the previously used `latest` tag so credentialed OpenQA jobs
+    # run a reviewed, immutable worker image.
+    name: registry.opensuse.org/devel/openqa/containers15.6/openqa_worker@sha256:d42231914db6f83ff6ab88adf09a50099510f2ff773d52b4d536d362cf47b49f
     entrypoint: ["/bin/bash", "-c"]
   extends: ".x86_64"
   # Not all our build runners have the required KVM setup to also run openQA atm
