@@ -39,3 +39,10 @@ files/boot-keys/private-key/
 files/boot-keys/VENDOR.der
 current-secure-vm/
 secure-vm-repo/
+
+# Python test artifacts
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
+__pycache__/
