@@ -14,26 +14,29 @@ retirement rationale.
 - Archaeology: understanding how the pre-consolidation KDE Linux BuildStream
   project (`elements/`, `patches/`, `plugins/`) was structured, modeled on
   GNOME's [gnome-build-meta](https://gitlab.gnome.org/GNOME/gnome-build-meta).
-- Reference for the OpenQA end-to-end test harness under `tests/openqa/`
-  (which has [its own contributing guide](tests/openqa/CONTRIBUTING.md) —
-  that subtree is more actively maintained than the BuildStream tree above
-  it).
+- Archaeology for the OpenQA end-to-end test harness under `tests/openqa/`,
+  which has
+  [its own historical contributing guide](tests/openqa/CONTRIBUTING.md).
 
-## If you do need to change something here
+## Verifying historical content locally
 
-Genuinely rare — a documentation correction, or a fix that must land in the
-historical tree for archaeology reasons. In that case:
+This repository has no active GitHub Actions workflow. The retained
+`.gitlab-ci.yml` and `.gitlab-ci/` files document the former upstream pipeline;
+GitHub does not execute them. Nothing in this repository is therefore enforced
+by CI.
+
+For local inspection of the historical tree:
 
 - BuildStream elements are driven through `just` (see the [Justfile](Justfile)):
   `just bst show <target>.bst` to inspect the dependency graph, `just bst-build`
   to build. Both run `bst` inside the pinned `bst2` container image via Podman.
-- Markdown is linted by GitLab CI via the GNOME `markdown-lint` component,
-  configured in [`.rumdl.toml`](.rumdl.toml).
+- Markdown can be linted locally with the configuration in
+  [`.rumdl.toml`](.rumdl.toml).
 - `plugins/*.py` and `utils/*.py` are the only Python in this tree (small
   BuildStream element plugins and maintenance scripts); lint them with
   `ruff check plugins utils` using [`ruff.toml`](ruff.toml).
-- Open the PR against `master` (this repo's default branch) and reference
-  what in Tromso, if anything, still needs the equivalent change.
+Changes to shipped BuildStream elements, Python tools, or OpenQA coverage belong
+in Tromso rather than this snapshot.
 
 ## Project docs
 
