@@ -14,10 +14,11 @@ retirement rationale.
 - Archaeology: understanding how the pre-consolidation KDE Linux BuildStream
   project (`elements/`, `patches/`, `plugins/`) was structured, modeled on
   GNOME's [gnome-build-meta](https://gitlab.gnome.org/GNOME/gnome-build-meta).
-- Reference for the OpenQA end-to-end test harness under `tests/openqa/`
-  (which has [its own contributing guide](tests/openqa/CONTRIBUTING.md) —
-  that subtree is more actively maintained than the BuildStream tree above
-  it).
+- Historical reference for the OpenQA end-to-end test harness under
+  `tests/openqa/` (which has
+  [its own contributing guide](tests/openqa/CONTRIBUTING.md)). The harness is
+  retained for archaeology with the rest of this repository; use Tromso for
+  maintained image tests.
 
 ## If you do need to change something here
 
@@ -27,8 +28,10 @@ historical tree for archaeology reasons. In that case:
 - BuildStream elements are driven through `just` (see the [Justfile](Justfile)):
   `just bst show <target>.bst` to inspect the dependency graph, `just bst-build`
   to build. Both run `bst` inside the pinned `bst2` container image via Podman.
-- Markdown is linted by GitLab CI via the GNOME `markdown-lint` component,
-  configured in [`.rumdl.toml`](.rumdl.toml).
+- Markdown lint settings are recorded in [`.rumdl.toml`](.rumdl.toml). The
+  historical GitLab pipeline references the GNOME `markdown-lint` component,
+  but no CI runs for this GitHub repository, so run the check locally before
+  opening a documentation correction.
 - `plugins/*.py` and `utils/*.py` are the only Python in this tree (small
   BuildStream element plugins and maintenance scripts); lint them with
   `ruff check plugins utils` using [`ruff.toml`](ruff.toml).
