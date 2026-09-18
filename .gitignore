@@ -1,5 +1,9 @@
 # Ignore Python local cache across repo
 **/__pycache__/
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
 
 # Ignore BuildStream local state
 .bst
